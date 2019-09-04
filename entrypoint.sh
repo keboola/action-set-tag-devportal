@@ -16,6 +16,7 @@ docker pull quay.io/keboola/developer-portal-cli-v2:latest
 
 export TARGET_TAG=`echo $TAG | /usr/bin/pcregrep -o1 '^refs/tags/(v?[0-9]+.[0-9]+.[0-9]+)$'`
 if [ "$TARGET_TAG" = "" ]
+then
     echo "Skipping deployment to Keboola Connection, tag ${TARGET_TAG} is not allowed."
 else 
 	echo "Deploying '${TARGET_TAG}' to application '${APP_ID}' of vendor '${VENDOR}'. Using service account '${KBC_DEVELOPERPORTAL_USERNAME}'."
