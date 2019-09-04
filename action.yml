@@ -1,12 +1,28 @@
-name: 'Container Action Template'
-description: 'Get started with Container actions'
-author: 'GitHub'
+name: 'Set Tag in Developer Portal'
+description: 'Deploys application to production Keboola Connection by setting the active tag in Developer Portal'
+author: 'Keboola'
 inputs: 
-  myInput:
-    description: 'Input to use'
-    default: 'world'
+  vendor:
+    description: 'Application vendor (e.g. keboola)'
+    required: true
+  app_id:
+    description: 'Application ID (e.g. keboola.ex-db-mysql)'
+    required: true
+  username:
+    description: 'Developer portal Service user name (e.g. keboola+my_app_deploy_user'
+    required: true
+  password:
+    description: 'Developer portal Service user password'
+    required: true
+  tag:
+    description: 'GitHub tag reference (e.g. refs/tags/1.0.0)'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.myInput }}
+    - ${{ inputs.vendor }}
+    - ${{ inputs.app_id }}
+    - ${{ inputs.username }}
+    - ${{ inputs.password }}
+    - ${{ inputs.tag }}

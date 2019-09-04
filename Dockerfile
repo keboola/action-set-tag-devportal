@@ -1,6 +1,6 @@
-FROM alpine:3.10
+FROM docker
 
-COPY LICENSE README.md /
+RUN apk add pcre pcre-tools
 
 COPY entrypoint.sh /entrypoint.sh
 
