@@ -14,7 +14,7 @@ TAG=$5
 
 docker pull quay.io/keboola/developer-portal-cli-v2:latest      
 
-export TARGET_TAG=`echo $TAG | /usr/bin/pcregrep -o1 '^refs/tags/(v?[0-9]+.[0-9]+.[0-9]+)$'`
+export TARGET_TAG=`echo $TAG | /usr/bin/pcregrep -o2 '^(refs/tags/)?(v?[0-9]+.[0-9]+.[0-9]+)$'`
 if [ "$TARGET_TAG" = "" ]
 then
     echo "Skipping deployment to Keboola Connection, tag ${TAG} is not allowed."
