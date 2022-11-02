@@ -17,6 +17,9 @@ inputs:
   tag:
     description: 'GitHub tag reference (e.g. refs/tags/1.0.0)'
     required: true
+  repository_app_id:
+    description: 'Developer porttal repository app (e.g. keboola.ex-db-mysql)'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -26,3 +29,4 @@ runs:
     - ${{ inputs.username }}
     - ${{ inputs.password }}
     - ${{ inputs.tag }}
+    - ${{ inputs.repository_app_id }}
