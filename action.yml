@@ -20,6 +20,7 @@ inputs:
   repository_app_id:
     description: 'Developer portal repository app (e.g. keboola.ex-db-mysql)'
     required: false
+    default: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
