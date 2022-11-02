@@ -8,9 +8,15 @@ then
 fi 
 VENDOR=$1
 APP_ID=$2
+REPOSITORY_APP_ID=$2
 export KBC_DEVELOPERPORTAL_USERNAME=$3
 export KBC_DEVELOPERPORTAL_PASSWORD=$4
 TAG=$5
+
+if [ $# -gt 5 ]
+then
+  REPOSITORY_APP_ID=$6
+fi
 
 docker pull quay.io/keboola/developer-portal-cli-v2:latest      
 
@@ -24,7 +30,7 @@ else
 	  -e KBC_DEVELOPERPORTAL_USERNAME \
 	  -e KBC_DEVELOPERPORTAL_PASSWORD \
 	  quay.io/keboola/developer-portal-cli-v2:latest \
-	  ecr:get-repository ${VENDOR} ${APP_ID}`
+	  ecr:get-repository ${VENDOR} ${REPOSITORY_APP_ID}`
 
     docker run --rm \
         -e KBC_DEVELOPERPORTAL_USERNAME \
